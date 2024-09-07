@@ -7,9 +7,6 @@ const personalMovieDB = {
     }
 };
 function displayMovies() {
-    if (personalMovieDB.privat) {
-        return; // Не выводим таблицу, если privat true
-    }
     const movieTableDiv = document.getElementById('movie-table');
     const table = document.createElement('table');
     const headerRow = document.createElement('tr');
@@ -35,4 +32,6 @@ function displayMovies() {
     movieTableDiv.appendChild(table);
 }
 // Вызов функции для отображения фильмов
-displayMovies();
+if (personalMovieDB.privat == false) {
+    displayMovies();    
+}
