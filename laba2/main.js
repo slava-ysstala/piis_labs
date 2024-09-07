@@ -33,5 +33,5 @@ function displayMovies() {
 }
 // Вызов функции для отображения фильмов
 if (personalMovieDB.privat == false) {
-    displayMovies();    
+        displayMovies();
 }
