@@ -1,5 +1,5 @@
 const personalMovieDB = {
-    privat: false,
+    privat: true,
     movies: {
         "Фильм 1": 8.5,
         "Фильм 2": 7.0,
