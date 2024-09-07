@@ -1,9 +1,9 @@
 const personalMovieDB = {
     privat: false,
     movies: {
-        "Фильм 1": 8.5,
-        "Фильм 2": 7.0,
-        "Фильм 3": 9.2
+        "Барби": 6,
+        "Гадкий я 4": 4,
+        "Матрица": 8
     }
 };
 function displayMovies() {
