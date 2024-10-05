@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Майки</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <h1>Наши Майки</h1>
+    <div class="product-container" id="product-container"></div>
+    <div class="modal" id="quick-view-modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal">&times;</span>
+            <h2 id="modal-title"></h2>
+            <p id="modal-color"></p> <!-- Добавлено для цвета -->
+            <div id="modal-images">
+                <img id="modal-image-front" src="" alt="Front View" />
+                <img id="modal-image-back" src="" alt="Back View" />
+            </div>
+            <p id="modal-price"></p>
+            <p id="modal-description"></p>
+        </div>
+    </div>
+
+    <script src="shirts.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
