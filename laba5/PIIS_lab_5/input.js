@@ -1,9 +1,16 @@
 const targets = document.querySelectorAll('.target');
 let isDragging = false;
 let isPinned = false;
-let offsetX, offsetY, originalPosition;
+let offsetX, offsetY;
+const originalPositions = new Map();
 
 targets.forEach(target => {
+    // Сохраняем начальные позиции
+    originalPositions.set(target, {
+        left: target.style.left || '0px',
+        top: target.style.top || '0px'
+    });
+
     target.addEventListener('mousedown', (e) => {
         if (!isPinned) {
             isDragging = true;
@@ -57,17 +64,14 @@ document.addEventListener('mouseup', () => {
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (isDragging) {
-            isDragging = false; // Остановить перетаскивание
-        }
-        if (isPinned) {
-            const target = [...targets].find(t => t.style.backgroundColor === 'blue');
-            if (target) {
-                target.style.left = originalPosition.left; // Вернуть на исходную позицию
-                target.style.top = originalPosition.top;
-                target.style.backgroundColor = 'red';
-                isPinned = false;
-            }
-        }
+        // Сбрасываем все фигуры на начальные позиции
+        targets.forEach(target => {
+            const originalPosition = originalPositions.get(target);
+            target.style.left = originalPosition.left;
+            target.style.top = originalPosition.top;
+            target.style.backgroundColor = 'red'; // Возвращаем цвет
+        });
+        isDragging = false;
+        isPinned = false;
     }
 });
