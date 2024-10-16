@@ -1,9 +1,17 @@
 const targets = document.querySelectorAll('.target');
 let isDragging = false;
 let isPinned = false;
-let offsetX, offsetY, originalPosition, originalWidth, originalHeight;
+let offsetX, offsetY, originalPosition;
+const originalStates = new Map();
 
 targets.forEach(target => {
+    // Сохраняем начальные размеры и позиции
+    originalStates.set(target, {
+        position: { left: target.style.left || '0px', top: target.style.top || '0px' },
+        width: target.clientWidth,
+        height: target.clientHeight
+    });
+
     target.addEventListener('mousedown', (e) => {
         if (!isPinned) {
             isDragging = true;
@@ -28,7 +36,7 @@ targets.forEach(target => {
         }
     });
 
-    // Добавляем обработчики для сенсорного экрана
+    // Обработчики для сенсорного экрана
     target.addEventListener('touchstart', (e) => {
         e.preventDefault(); // Предотвращаем прокрутку страницы
         if (!isPinned) {
@@ -96,18 +104,16 @@ document.addEventListener('mouseup', () => {
 
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-        if (isDragging) {
-            isDragging = false;
-        }
-        if (isPinned) {
-            const target = [...targets].find(t => t.style.backgroundColor === 'blue');
-            if (target) {
-                target.style.left = originalPosition.left;
-                target.style.top = originalPosition.top;
-                target.style.backgroundColor = 'red';
-                isPinned = false;
-            }
-        }
+        targets.forEach(target => {
+            const originalState = originalStates.get(target);
+            target.style.left = originalState.position.left;
+            target.style.top = originalState.position.top;
+            target.style.width = `${originalState.width}px`;
+            target.style.height = `${originalState.height}px`;
+            target.style.backgroundColor = 'red'; // Возвращаем цвет
+        });
+        isDragging = false;
+        isPinned = false;
     }
 });
 
@@ -117,51 +123,13 @@ document.addEventListener('touchstart', (e) => {
         isDragging = false;
         const target = [...targets].find(t => t.style.backgroundColor === 'blue');
         if (target) {
-            target.style.left = originalPosition.left;
-            target.style.top = originalPosition.top;
+            const originalState = originalStates.get(target);
+            target.style.left = originalState.position.left;
+            target.style.top = originalState.position.top;
+            target.style.width = `${originalState.width}px`;
+            target.style.height = `${originalState.height}px`;
             target.style.backgroundColor = 'red';
             isPinned = false;
         }
     }
 });
-
-// Изменение размера объекта
-targets.forEach(target => {
-    target.addEventListener('mousedown', (e) => {
-        if (e.offsetX > target.clientWidth - 10 && e.offsetY > target.clientHeight - 10) {
-            originalWidth = target.clientWidth;
-            originalHeight = target.clientHeight;
-            target.style.cursor = 'nwse-resize';
-            target.addEventListener('mousemove', resize);
-        }
-    });
-
-    target.addEventListener('mouseup', (e) => {
-        target.style.cursor = 'auto';
-        target.removeEventListener('mousemove', resize);
-    });
-
-    target.addEventListener('touchstart', (e) => {
-        const touch = e.touches[0];
-        if (touch.clientX > target.getBoundingClientRect().right - 10 && touch.clientY > target.getBoundingClientRect().bottom - 10) {
-            originalWidth = target.clientWidth;
-            originalHeight = target.clientHeight;
-            target.style.cursor = 'nwse-resize';
-            target.addEventListener('touchmove', resize);
-        }
-    });
-
-    target.addEventListener('touchend', (e) => {
-        target.style.cursor = 'auto';
-        target.removeEventListener('touchmove', resize);
-    });
-});
-
-// Функция изменения размера
-function resize(e) {
-    const target = e.target;
-    const newWidth = Math.max(50, originalWidth + (e.clientX - target.getBoundingClientRect().left));
-    const newHeight = Math.max(50, originalHeight + (e.clientY - target.getBoundingClientRect().top));
-    target.style.width = `${newWidth}px`;
-    target.style.height = `${newHeight}px`;
-}
