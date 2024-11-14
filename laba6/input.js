@@ -36,19 +36,18 @@ targets.forEach(target => {
         }
     });
 
-    target.addEventListener('touchend', (e) => {
+    target.addEventListener('touchend', () => {
         isDragging = false;
     });
 
     target.addEventListener('touchmove', (e) => {
-        if (isDragging) {
-            if (e.touches.length === 2) {
-                resetPositions();
-            } else {
-                const touch = e.touches[0];
-                target.style.left = `${touch.clientX - offsetX}px`;
-                target.style.top = `${touch.clientY - offsetY}px`;
-            }
+        if (e.touches.length === 2) {
+            // Если два пальца касаются, сбрасываем позиции
+            resetPositions();
+        } else if (isDragging) {
+            const touch = e.touches[0];
+            target.style.left = `${touch.clientX - offsetX}px`;
+            target.style.top = `${touch.clientY - offsetY}px`;
         }
     });
 
