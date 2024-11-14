@@ -24,7 +24,6 @@ targets.forEach(target => {
         target.style.backgroundColor = 'blue';
     });
 
-    // Обработка двойного касания для мобильных устройств
     target.addEventListener('touchstart', (e) => {
         if (e.touches.length === 2) {
             // Два пальца - сброс позиций
@@ -37,15 +36,19 @@ targets.forEach(target => {
         }
     });
 
-    target.addEventListener('touchend', () => {
+    target.addEventListener('touchend', (e) => {
         isDragging = false;
     });
 
     target.addEventListener('touchmove', (e) => {
         if (isDragging) {
-            const touch = e.touches[0];
-            target.style.left = `${touch.clientX - offsetX}px`;
-            target.style.top = `${touch.clientY - offsetY}px`;
+            if (e.touches.length === 2) {
+                resetPositions();
+            } else {
+                const touch = e.touches[0];
+                target.style.left = `${touch.clientX - offsetX}px`;
+                target.style.top = `${touch.clientY - offsetY}px`;
+            }
         }
     });
 
