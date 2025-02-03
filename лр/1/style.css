@@ -1,0 +1,83 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    line-height: 1.6;
+    background-color: #6ca96c;
+    display: flex;
+    justify-content: center;
+}
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+}
+h3 {
+    font-size: 1.2em;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+table, th, td {
+    border: 1px solid #e3de4f;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+th {
+    background-color: #e3de4f;
+}
+nav {
+    margin-bottom: 20px;
+}
+nav a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+}
+#content {
+    width: 1440px;
+}
+#f10 {
+    text-align: left;
+}
+#f20 {
+    text-align: right;
+    font-weight: bold;
+}
+#f30 {
+    text-align: center;
+}
+img {
+    height: 250px; 
+    /*width: 250px;*/
+    border-radius: 15px;
+}
+#film1 {
+    font-family: "flowext", serif;
+}
+#film2 {
+    font-family: "Chickpeas", serif;
+}
+#film3 {
+    font-family: "ForUni-Regular", serif;
+}
+@font-face {
+    font-family: "ForUni-Regular";
+    src: url("ForUni-Regular.ttf") format("truetype");
+}
+@font-face {
+    font-family: "flowext";
+    src: url("flowext.otf") format("truetype");
+}
+@font-face {
+    font-family: "Chickpeas";
+    src: url("Chickpeas.ttf") format("truetype");
+}
