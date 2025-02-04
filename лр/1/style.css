@@ -15,10 +15,6 @@ h2 {
 h3 {
     font-size: 1.2em;
 }
-img {
-    max-width: 100%;
-    height: auto;
-}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -57,7 +53,6 @@ nav a {
 }
 img {
     height: 250px; 
-    /*width: 250px;*/
     border-radius: 15px;
 }
 #film1 {
