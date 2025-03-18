@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шпаргалка по Flexbox</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+
+    .section {
+      margin: 20px 0;
+    }
+
+    .section h2 {
+      margin-bottom: 10px;
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .example-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      border: 2px dashed #bbb; /* Граница для видимости блока */
+      padding: 10px;
+    }
+
+    .example {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      flex: 1;
+      margin: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      background-color: #333;
+      color: white;
+    }
+
+    .controls button {
+      padding: 10px;
+      background-color: #555;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .controls button:hover {
+      background-color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Свойство display</h2>
+    <div class="buttons-container">
+      <button onclick="setDisplay('flex')">flex</button>
+      <button onclick="setDisplay('inline-flex')">inline-flex</button>
+    </div>
+    <div class="example-container" id="exampleDisplay">
+      <div class="example">Элемент 1</div>
+      <div class="example">Элемент 2</div>
+      <div class="example">Элемент 3</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Свойство flex-direction</h2>
+    <div class="buttons-container">
+      <button onclick="setFlexDirection('row')">row</button>
+      <button onclick="setFlexDirection('row-reverse')">row-reverse</button>
+      <button onclick="setFlexDirection('column')">column</button>
+      <button onclick="setFlexDirection('column-reverse')">column-reverse</button>
+    </div>
+    <div class="example-container" id="exampleFlexDirection">
+      <div class="example">Элемент 1</div>
+      <div class="example">Элемент 2</div>
+      <div class="example">Элемент 3</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Свойство order</h2>
+    <div class="buttons-container">
+      <button onclick="setOrder(-1)">-1</button>
+      <button onclick="setOrder(0)">0</button>
+      <button onclick="setOrder(1)">1</button>
+    </div>
+    <div class="example-container" id="exampleOrder">
+      <div class="example">Элемент 1</div>
+      <div class="example child-active">Элемент 2</div>
+      <div class="example">Элемент 3</div>
+    </div>
+  </div>
+
+  <script>
+    // Функции для изменения свойств флекс-контейнера
+
+    function setDisplay(value) {
+      const example = document.getElementById('exampleDisplay');
+      example.style.display = value;
+    }
+
+    function setFlexDirection(value) {
+      const example = document.getElementById('exampleFlexDirection');
+      example.style.flexDirection = value;
+    }
+
+    function setOrder(value) {
+      const children = document.querySelectorAll('#exampleOrder .example');
+      children.forEach((child, index) => {
+        if (index === 1) { // Меняем порядок для второго элемента
+          child.style.order = value;
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
