@@ -1,0 +1,76 @@
+html {
+    font-family: sans-serif;
+  }
+
+  body {
+    margin: 0;
+  }
+
+  header {
+    background: rgb(52, 206, 142);
+    height: 100px;
+  }
+
+  h1 {
+    text-align: center;
+    color: white;
+    line-height: 100px;
+    margin: 0;
+  }
+
+  article {
+    padding: 10px;
+    margin: 10px;
+    background: rgba(16, 233, 215, 0.178);
+  }
+
+  .adaptive article:nth-child(1) { grid-area: article1; }
+  .adaptive article:nth-child(2) { grid-area: article2; }
+  .adaptive article:nth-child(3) { grid-area: article3; }
+  .adaptive article:nth-child(4) { grid-area: article4; }
+  .adaptive article:nth-child(5) { grid-area: article5; }
+  .adaptive article:nth-child(6) { grid-area: article6; }
+  .adaptive article:nth-child(7) { grid-area: article7; }
+  .adaptive article:nth-child(8) { grid-area: article8; }
+  .adaptive article:nth-child(9) { grid-area: article9; }
+
+  .adaptive {
+    display: grid;
+  }
+
+  @media (min-width: 1400px) {
+    .adaptive {
+      grid-template-areas: 
+      "article1 article1 article2 article2"
+      "article3 article3 article3 article3"
+      "article4 article4 article5 article5"
+      "article6 article7 article8 article9";
+    }
+  }
+
+  @media (min-width: 700px) and (max-width: 1399px){
+    .adaptive {
+      grid-template-areas: 
+      "article1 article1"
+      "article2 article2"
+      "article3 article3"
+      "article4 article5"
+      "article6 article7"
+      "article8 article9";
+    }
+  }
+
+  @media (max-width: 699px) {
+    .adaptive {
+      grid-template-areas: 
+      "article1"
+      "article2"
+      "article3"
+      "article4"
+      "article5"
+      "article6"
+      "article7"
+      "article8"
+      "article9";
+    }
+  }

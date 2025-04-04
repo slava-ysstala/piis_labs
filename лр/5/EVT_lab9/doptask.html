@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Галерея с наложением</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow: visible;
+      padding: 20px;
+      position: relative;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: auto;
+      transition: transform 0.3s ease, z-index 0.3s ease;
+      margin-left: 20px; /* Расстояние по умолчанию */
+      margin-top: 0;
+      z-index: 1;
+      position: relative;
+    }
+
+    /* Сброс отступа у первого изображения */
+    .gallery img:first-child {
+      margin-left: 0;
+    }
+
+    /* Установка сдвигов по умолчанию */
+    .gallery img:nth-child(1) { --shiftY: 0px; }
+    .gallery img:nth-child(2) { --shiftY: 0px; }
+    .gallery img:nth-child(3) { --shiftY: 0px; }
+    .gallery img:nth-child(4) { --shiftY: 0px; }
+
+    /* Перекрытие + диагональное смещение */
+    @media (max-width: 1000px) {
+      .gallery img {
+        margin-left: -40px;
+      }
+
+      .gallery img:nth-child(2) { --shiftY: 20px; }
+      .gallery img:nth-child(3) { --shiftY: 40px; }
+      .gallery img:nth-child(4) { --shiftY: 60px; }
+    }
+
+    @media (max-width: 700px) {
+      .gallery img {
+        margin-left: -80px;
+      }
+
+      .gallery img:nth-child(2) { --shiftY: 40px; }
+      .gallery img:nth-child(3) { --shiftY: 80px; }
+      .gallery img:nth-child(4) { --shiftY: 120px; }
+    }
+
+    @media (max-width: 500px) {
+      .gallery img {
+        margin-left: -120px;
+      }
+
+      .gallery img:nth-child(2) { --shiftY: 60px; }
+      .gallery img:nth-child(3) { --shiftY: 120px; }
+      .gallery img:nth-child(4) { --shiftY: 180px; }
+    }
+
+    /* Применение вертикального сдвига */
+    .gallery img {
+      top: var(--shiftY);
+    }
+
+    /* Ховер эффект */
+    .gallery img:hover {
+      transform: scale(1.1);
+      z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <div class="gallery">
+    <img src="1.jpg" alt="Cago">
+    <img src="2.jpeg" alt="Krico">
+    <img src="3.jpg" alt="Kavazaki">
+    <img src="4.jpg" alt="Estriper">
+  </div>
+</body>
+</html>

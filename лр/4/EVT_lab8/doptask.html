@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Шпаргалка по Grid</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f4f4f4;
+    }
+
+    .section {
+      margin-bottom: 30px;
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .buttons-container button {
+      padding: 10px;
+      background-color: #555;
+      border: none;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .buttons-container button:hover {
+      background-color: #888;
+    }
+
+    .example-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      padding: 10px;
+      border: 2px dashed #bbb;
+      background: white;
+    }
+
+    .example {
+      background-color: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="section">
+    <h2>1. Свойство grid-template-columns</h2>
+    <div class="buttons-container">
+      <button onclick="setColumns('repeat(2, 1fr)')">2 колонки</button>
+      <button onclick="setColumns('repeat(3, 1fr)')">3 колонки</button>
+      <button onclick="setColumns('repeat(4, 1fr)')">4 колонки</button>
+    </div>
+    <div class="example-container" id="exampleGrid">
+      <div class="example">1</div>
+      <div class="example">2</div>
+      <div class="example">3</div>
+      <div class="example">4</div>
+      <div class="example">5</div>
+      <div class="example">6</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>2. Свойство gap</h2>
+    <div class="buttons-container">
+      <button onclick="setGap('5px')">5px</button>
+      <button onclick="setGap('15px')">15px</button>
+      <button onclick="setGap('30px')">30px</button>
+    </div>
+    <div class="example-container" id="exampleGap">
+      <div class="example">1</div>
+      <div class="example">2</div>
+      <div class="example">3</div>
+      <div class="example">4</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>3. Свойство justify-items</h2>
+    <div class="buttons-container">
+      <button onclick="setJustifyItems('start')">start</button>
+      <button onclick="setJustifyItems('center')">center</button>
+      <button onclick="setJustifyItems('end')">end</button>
+    </div>
+    <div class="example-container" id="exampleJustifyItems">
+      <div class="example">1</div>
+      <div class="example">2</div>
+      <div class="example">3</div>
+    </div>
+  </div>
+
+  <script>
+    function setColumns(value) {
+      document.getElementById('exampleGrid').style.gridTemplateColumns = value;
+    }
+
+    function setGap(value) {
+      document.getElementById('exampleGap').style.gap = value;
+    }
+
+    function setJustifyItems(value) {
+      document.getElementById('exampleJustifyItems').style.justifyItems = value;
+    }
+  </script>
+
+</body>
+</html>
