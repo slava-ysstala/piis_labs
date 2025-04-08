@@ -1,0 +1,158 @@
+/* 1. Приклеиваем header и footer */
+header.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+footer.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+/* 2. Контент занимает всё пространство экрана */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body .wrapper {
+    max-width: none !important;
+    width: 100% !important;
+    height: 100vh; /* растянуть на весь экран */
+    box-sizing: border-box;
+}
+
+body main {
+    padding-top: 60px; /* чтобы учесть высоту header */
+    padding-bottom: 60px; /* чтобы учесть footer */
+} 
+
+header, footer {
+    height: 60px;
+    background-color: orange; /* или любой другой непрозрачный фон */
+    z-index: 1000; /* чтобы они точно были поверх всего */
+    font-size: 40px;
+}
+
+
+
+/* 3. Текст без курсива (кроме цитат) */
+article.article p {
+    font-style: normal !important;
+}
+
+blockquote.blockquote {
+    font-style: italic !important;
+}
+
+/* 4. Центрирование всего текста */
+body {
+    text-align: center;
+}
+
+/* 5. Блоки "теперь я знаю немного больше" */
+.word {
+    position: sticky;
+    top: 60px; /* отступ ниже header */
+    z-index: 2;
+    padding: 5px 10px;
+    font-weight: bold;
+    text-align: center;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+/* Индивидуальное позиционирование для каждой "колонки" */
+.word.first {
+    background-color: #ffd6d6;
+    right: 90%;
+    transform: translateX(-50%);
+}
+
+.word.second {
+    background-color: #d6ffd6;
+    right: 70%;
+    transform: translateX(-50%);
+}
+
+.word.third {
+    background-color: #d6e0ff;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.word.fourth {
+    background-color: #fff0d6;
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+.word.fifth {
+    background-color: #f0d6ff;
+    left: 90%;
+    transform: translateX(-50%);
+}
+
+
+
+/* 6. Первая буква крупнее и цветная */
+article.article img + p::first-letter {
+    font-size: 200%;
+    color: #3366cc;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+
+/* 7. Картинки чередуются и обтекаются */
+/* Общие стили для всех изображений */
+article.article img {
+    max-height: 80px !important; /* или подбери вручную под свои сюжеты */
+    height: 80px !important;
+    margin: 10px;
+}
+
+/* Чередование: нечётные статьи — слева */
+article.article:nth-of-type(odd) img {
+    float: left;
+    margin-right: 15px;
+}
+
+/* Чередование: чётные статьи — справа */
+article.article:nth-of-type(even) img {
+    float: right;
+    margin-left: 15px;
+}
+
+/* Контейнер статьи очищает обтекание */
+article.article::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/* 8. Размер картинки (по высоте не больше текста) */
+article.article img {
+    max-height: 150px; /* можно подогнать по результату */
+    width: auto;
+}
+
+/* 9. Ссылка в футере — как по умолчанию */
+footer.footer a {
+    /*all: unset;*/
+    text-decoration: underline !important;
+    color: blue !important;
+    cursor: default;}
+
+/* 10. Дополнительно: избегаем влияния !important стилей ссылок */
+footer.footer a:hover {
+    cursor: default !important;
+}
