@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Основы адаптивной вёрстки</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Reveal.js CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/night.css" id="theme">
+
+  <!-- Highlight.js для подсветки кода -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@11.7.0/styles/github.css">
+
+  <style>
+    body {
+      background-color: #1a2a3a; /*Темный синий */
+      background-image: url('images.jpg'); /* Укажи путь к картинке */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .reveal h2, .reveal h3 {
+      color: #ffcc66; /* Янтарный, золотистый */
+    }
+
+    .reveal .slides {
+      color: #a6d8d7; /* Мятный, голубой оттенок */
+    }
+
+    /* Стилизация подсветки кода */
+    pre code {
+      font-size: 1.1em; /* Увеличим размер шрифта в коде */
+      line-height: 1.5; /* Интерлиньяж для улучшения читаемости */
+      color: #ffcc66 !important; /* Цвет текста кода — янтарный */
+      background-color: #1a2a3a !important; /* Темный фон */
+      border-radius: 5px;
+      padding: 10px;
+      display: block;
+      overflow-x: auto; /* Чтобы код не вылазил за пределы */
+    }
+
+    .reveal pre {
+      margin: 0;
+      padding: 0;
+    }
+
+    .reveal code {
+      color: #ffcc66; /* Янтарные акценты */
+    }
+
+    .reveal section {
+      background-color: #1a2a3a;
+    }
+  </style>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+      <!-- Слайд 1: Заглавие -->
+      <section data-transition="zoom" data-background-image="images.jpg">
+        <h2>Основы адаптивной вёрстки</h2>
+        <p>Как создавать сайты, которые работают везде</p>
+        <aside class="notes">
+          Приветствие. В этой презентации расскажем, что такое адаптивная вёрстка, зачем она нужна, какие технологии используются, и как начать верстать адаптивные сайты.
+        </aside>
+      </section>
+
+      <!-- Слайд 2: Что такое адаптивность -->
+      <section data-transition="fade" data-background-image="images.jpg">
+        <h3>Что такое адаптивная вёрстка?</h3>
+        <ul>
+          <li>Подстраивается под ширину экрана</li>
+          <li>Удобна на телефоне, планшете, ноутбуке</li>
+        </ul>
+        <aside class="notes">
+          Адаптивная вёрстка — это подход к веб-разработке, при котором интерфейс меняется в зависимости от устройства пользователя. Это значит — всё видно и удобно как на телефоне, так и на большом экране.
+        </aside>
+      </section>
+
+      <!-- Слайд 3: Почему это важно -->
+      <section data-transition="slide" data-background-image="images.jpg">
+        <h3>Зачем она нужна?</h3>
+        <ul>
+          <li>Половина трафика — с мобильных</li>
+          <li>Google понижает рейтинг неадаптивных сайтов</li>
+        </ul>
+        <aside class="notes">
+          Адаптивная вёрстка — это уже не опция, а стандарт. Мобильные пользователи — это как минимум половина всех посетителей. Также поисковые системы отдают приоритет сайтам, которые адаптированы под разные устройства.
+        </aside>
+      </section>
+
+      <!-- Слайд 4: Media-запросы -->
+      <section data-transition="fade" data-background-image="images.jpg">
+        <h3>Media-запросы</h3>
+        <p><strong>@media</strong> позволяет применять CSS в зависимости от устройства</p>
+        <pre><code class="language-css">
+@media (max-width: 600px) {
+  body {
+    font-size: 14px;
+  }
+}
+        </code></pre>
+        <aside class="notes">
+          Media-запросы — основа адаптивной вёрстки. Они позволяют изменять стили при определённых условиях, например, когда ширина окна становится меньше 600 пикселей.
+        </aside>
+      </section>
+
+      <!-- Слайд 5: Flexbox -->
+      <section data-transition="convex" data-background-image="images.jpg">
+        <h3>Гибкие макеты: Flexbox</h3>
+        <pre><code class="language-html">
+<div class="container">
+  <div>Блок 1</div>
+  <div>Блок 2</div>
+</div>
+        </code></pre>
+        <pre><code class="language-css">
+.container {
+  display: flex;
+  flex-wrap: wrap;
+}
+        </code></pre>
+        <aside class="notes">
+          Flexbox — мощный инструмент для построения гибких макетов. Особенно хорошо работает при горизонтальном расположении элементов, а также при необходимости быстро менять порядок блоков.
+        </aside>
+      </section>
+
+      <!-- Слайд 6: Grid Layout -->
+      <section data-transition="concave" data-background-image="images.jpg">
+        <h3>Grid Layout</h3>
+        <p>Современная система для сложных макетов</p>
+        <pre><code class="language-css">
+.container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+        </code></pre>
+        <aside class="notes">
+          CSS Grid — это ещё более мощный инструмент, чем Flexbox. Он позволяет описывать двумерные макеты: строки и колонки. Подходит для создания сложных интерфейсов и таблиц.
+        </aside>
+      </section>
+
+      <!-- Слайд 7: Mobile-first -->
+      <section data-transition="slide" data-background-image="images.jpg">
+        <h3>Mobile-first подход</h3>
+        <ul>
+          <li>Сначала стили для телефонов</li>
+          <li>Потом — для более широких экранов</li>
+        </ul>
+        <aside class="notes">
+          Подход mobile-first означает, что сначала мы пишем стили для самой маленькой ширины (обычно — телефоны), и далее добавляем стили для планшетов, ноутбуков и десктопов.
+        </aside>
+      </section>
+
+      <!-- Слайд 8: Инструменты и подходы -->
+      <section data-transition="zoom" data-background-image="images.jpg">
+        <h3>Что ещё поможет?</h3>
+        <ul>
+          <li>Фреймворки (Bootstrap, Tailwind)</li>
+          <li>Относительные единицы (em, %, vw)</li>
+          <li>Тестирование на реальных устройствах</li>
+        </ul>
+        <aside class="notes">
+          Адаптивность не ограничивается CSS. Мы можем использовать фреймворки с готовыми компонентами, а также учитывать разные плотности экрана, пользоваться отладкой в DevTools и применять относительные единицы.
+        </aside>
+      </section>
+
+      <!-- Слайд 9: Завершение -->
+      <section data-transition="fade" data-background-image="images.jpg">
+        <h3>Итоги</h3>
+        <p>Адаптивность = удобство + скорость + охват</p>
+        <aside class="notes">
+          Адаптивная вёрстка — это не просто тренд, а необходимость. Пользователи ждут, что сайт будет удобным и быстрым на любом устройстве. Это напрямую влияет на поведение, удержание и продажи.
+        </aside>
+      </section>
+
+    </div>
+  </div>
+
+  <!-- Reveal.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.js"></script>
+
+  <script>
+    Reveal.initialize({
+      hash: true,
+      transition: 'slide',
+      plugins: [ RevealNotes, RevealHighlight ],
+      controls: true,
+      progress: true,
+      center: true,
+      slideNumber: true,
+      embedded: false,
+    });
+  </script>
+
+</body>
+</html>
