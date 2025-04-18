@@ -1,4 +1,4 @@
-/* 1. Приклеиваем header и footer */
+/* 1 */
 header.header {
     position: fixed;
     top: 0;
@@ -15,7 +15,7 @@ footer.footer {
     z-index: 10;
 }
 
-/* 2. Контент занимает всё пространство экрана */
+/* 2 */
 html, body {
     height: 100%;
     margin: 0;
@@ -25,25 +25,25 @@ html, body {
 body .wrapper {
     max-width: none !important;
     width: 100% !important;
-    height: 100vh; /* растянуть на весь экран */
+    height: 100vh;
     box-sizing: border-box;
 }
 
 body main {
-    padding-top: 60px; /* чтобы учесть высоту header */
-    padding-bottom: 60px; /* чтобы учесть footer */
+    padding-top: 60px;
+    padding-bottom: 60px;
 } 
 
 header, footer {
     height: 60px;
-    background-color: orange; /* или любой другой непрозрачный фон */
-    z-index: 1000; /* чтобы они точно были поверх всего */
+    background-color: orange;
+    z-index: 1000;
     font-size: 40px;
 }
 
 
 
-/* 3. Текст без курсива (кроме цитат) */
+/* 3 */
 article.article p {
     font-style: normal !important;
 }
@@ -52,15 +52,15 @@ blockquote.blockquote {
     font-style: italic !important;
 }
 
-/* 4. Центрирование всего текста */
+/* 4 */
 body {
     text-align: center;
 }
 
-/* 5. Блоки "теперь я знаю немного больше" */
+/* 5 */
 .word {
     position: sticky;
-    top: 60px; /* отступ ниже header */
+    top: 60px;
     z-index: 2;
     padding: 5px 10px;
     font-weight: bold;
@@ -69,7 +69,6 @@ body {
     margin: 0 auto;
 }
 
-/* Индивидуальное позиционирование для каждой "колонки" */
 .word.first {
     background-color: #ffd6d6;
     right: 90%;
@@ -102,7 +101,7 @@ body {
 
 
 
-/* 6. Первая буква крупнее и цветная */
+/* 6 */
 article.article img + p::first-letter {
     font-size: 200%;
     color: #3366cc;
@@ -111,27 +110,23 @@ article.article img + p::first-letter {
 }
 
 
-/* 7. Картинки чередуются и обтекаются */
-/* Общие стили для всех изображений */
+/* 7 */
 article.article img {
-    max-height: 80px !important; /* или подбери вручную под свои сюжеты */
+    max-height: 80px !important;
     height: 80px !important;
     margin: 10px;
 }
 
-/* Чередование: нечётные статьи — слева */
 article.article:nth-of-type(odd) img {
     float: left;
     margin-right: 15px;
 }
 
-/* Чередование: чётные статьи — справа */
 article.article:nth-of-type(even) img {
     float: right;
     margin-left: 15px;
 }
 
-/* Контейнер статьи очищает обтекание */
 article.article::after {
     content: "";
     display: block;
@@ -139,20 +134,20 @@ article.article::after {
 }
 
 
-/* 8. Размер картинки (по высоте не больше текста) */
+/* 8 */
 article.article img {
-    max-height: 150px; /* можно подогнать по результату */
+    max-height: 150px; 
     width: auto;
 }
 
-/* 9. Ссылка в футере — как по умолчанию */
+/* 9 */
 footer.footer a {
     /*all: unset;*/
     text-decoration: underline !important;
     color: blue !important;
     cursor: default;}
 
-/* 10. Дополнительно: избегаем влияния !important стилей ссылок */
+/* 10 */
 footer.footer a:hover {
     cursor: default !important;
 }
